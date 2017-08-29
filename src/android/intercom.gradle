@@ -1,0 +1,45 @@
+buildscript {
+    ext {
+        pushType = ''
+        new XmlSlurper().parse(file('../../config.xml')).preference.each {
+            if (it.@name.text() == 'intercom-android-push-type') {
+                pushType = it.@value.text().toLowerCase()
+            }
+        }
+    }
+    repositories {
+        jcenter()
+        mavenLocal()
+        maven { url 'https://maven.google.com' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.+'
+        if (pushType == 'fcm') {
+            classpath 'com.google.gms:google-services:3.0.0'
+        }
+    }
+}
+
+repositories {
+    jcenter()
+    maven { url 'https://maven.google.com' }
+}
+dependencies {
+    compile 'io.intercom.android:intercom-sdk-base:4.0.+'
+    if (pushType == 'gcm') {
+        compile 'io.intercom.android:intercom-sdk-gcm:4.0.+'
+    } else if (pushType == 'fcm') {
+        compile 'com.google.firebase:firebase-messaging:11.+'
+        compile 'io.intercom.android:intercom-sdk-fcm:4.0.+'
+    }
+}
+
+task copyGoogleServices(type: Copy) {
+    from '../../google-services.json'
+    into '.'
+}
+
+if (pushType == 'fcm') {
+    tasks.copyGoogleServices.execute()
+    apply plugin: com.google.gms.googleservices.GoogleServicesPlugin
+}
