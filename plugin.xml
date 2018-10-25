@@ -65,4 +65,11 @@
       </config-file>
     </platform>
 
+    <platform name="browser">
+        <hook type="after_prepare" src="scripts/after_prepare.js" />
+        <js-module src="src/browser/intercom-browser.js" name="IntercomProxy">
+            <runs />
+        </js-module>
+    </platform>
+
 </plugin>
