@@ -6,7 +6,8 @@
     "id": "cordova-plugin-intercom",
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "browser"
     ]
   },
   "repository": {
