@@ -8,18 +8,30 @@ script.innerHTML = "(function(){var w=window;var ic=w.Intercom;if(typeof ic==='f
     + "  var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()";
 document.getElementsByTagName('head')[0].appendChild(script);
 
+function getAppVersion() {
+    var Connect = new XMLHttpRequest();
+    Connect.open("GET", "config.xml", false);
+    Connect.setRequestHeader("Content-Type", "text/xml");
+    Connect.send(null);
+    return Connect.responseXML.getElementsByTagName("widget")[0].getAttribute("version");
+}
+
 var intercom = {
     registerIdentifiedUser: function (successCallback, errorCallback, options) {
         window.Intercom('boot', {
             app_id: appId,
             user_id: options[0].userId,
-            user_hash: options[0].userHash
+            user_hash: options[0].userHash,
+            desktop_app_version: getAppVersion(),
+            desktop_platform: process.platform
         });
         successCallback('success');
     },
     registerUnidentifiedUser: function (successCallback, errorCallback, options) {
         window.Intercom('boot', {
-            app_id: appId
+            app_id: appId,
+            desktop_app_version: getAppVersion(),
+            desktop_platform: process.platform
         });
         successCallback('success');
     },
