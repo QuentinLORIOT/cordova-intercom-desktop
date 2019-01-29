@@ -10,10 +10,6 @@
       "browser"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/intercom/intercom-cordova.git"
-  },
   "keywords": [
     "intercom",
     "intercom-cordova",
