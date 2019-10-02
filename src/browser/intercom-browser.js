@@ -1,5 +1,7 @@
 var appId = 'APP_ID';
 var unReadCount = 0;
+var authorizedLanguages = ['fr', 'en'];
+var defaultLanguage = 'fr';
 
 var script = document.createElement("script");
 script.type = "text/javascript";
@@ -16,10 +18,15 @@ function getAppVersion() {
     return Connect.responseXML.getElementsByTagName("widget")[0].getAttribute("version");
 }
 
+function checkLang(lang) {
+    return authorizedLanguages.indexOf(lang.toLowerCase()) > -1;
+}
+
 var intercom = {
     registerIdentifiedUser: function (successCallback, errorCallback, options) {
         window.Intercom('boot', {
             app_id: appId,
+            language_override: checkLang(options[0].lang) ? options[0].lang.toLowerCase() : defaultLanguage,
             user_id: options[0].userId,
             user_hash: options[0].userHash,
             desktop_app_version: getAppVersion(),
@@ -30,6 +37,7 @@ var intercom = {
     registerUnidentifiedUser: function (successCallback, errorCallback, options) {
         window.Intercom('boot', {
             app_id: appId,
+            language_override: checkLang(options[0].lang) ? options[0].lang.toLowerCase() : defaultLanguage,
             desktop_app_version: getAppVersion(),
             desktop_platform: process.platform
         });
