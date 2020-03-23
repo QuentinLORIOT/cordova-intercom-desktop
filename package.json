@@ -16,7 +16,7 @@
     "ecosystem:cordova",
     "cordova-ios",
     "cordova-android",
-    "cordova-brower"
+    "cordova-browser"
   ],
   "engines": [
     {
@@ -33,7 +33,7 @@
     },
     {
       "name": "cordova-browser",
-      "version": ">=5.0.4"
+      "version": ">=5.0.0"
     }
   ],
   "author": "Intercom",
