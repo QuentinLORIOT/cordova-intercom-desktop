@@ -22,7 +22,7 @@ var files = [
 
 for(var i in files) {
     try {
-        var contents = fs.readFileSync(files[i]).toString()
-        fs.writeFileSync(files[i], contents.replace(/APP_ID/g, APP_ID))
-    } catch(err) {}
+    	var contents = fs.readFileSync(files[i]).toString()
+	    fs.writeFileSync(files[i], contents.replace(/APP_ID/g, APP_ID))
+	} catch(err) {}
 }

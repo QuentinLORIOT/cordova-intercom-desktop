@@ -33,7 +33,11 @@ public class IntercomBridge extends CordovaPlugin {
             @Override public void run() {
                 setUpIntercom();
                 try {
+<<<<<<< HEAD
                     Injector.get().getApi().updateUser(UserUpdateRequest.create(true, false, true));
+=======
+                    Injector.get().getApi().updateUser(new UserUpdateRequest(true, false, true));
+>>>>>>> 09efeeec3eb83f3aeda4fe84c55610b649b83991
                 } catch (RuntimeException e) {
                     // Intercom is not initialised yet, do nothing
                 }
