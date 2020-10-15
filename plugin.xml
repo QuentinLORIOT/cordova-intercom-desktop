@@ -9,7 +9,7 @@
 
     <engines>
       <engine name="cordova" version=">=9.0.0" />
-      <engine name="cordova-android" version=">=9.0.0" />
+      <engine name="cordova-android" version=">=8.0.0" />
       <engine name="cordova-ios" version=">=5.0.0" />
     </engines>
 
@@ -63,6 +63,13 @@
           <param name="onload" value="true" />
         </feature>
       </config-file>
+    </platform>
+
+    <platform name="browser">
+        <hook type="after_prepare" src="scripts/after_prepare.js" />
+        <js-module src="src/browser/intercom-browser.js" name="IntercomProxy">
+            <runs />
+        </js-module>
     </platform>
 
 </plugin>

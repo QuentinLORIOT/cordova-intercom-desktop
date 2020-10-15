@@ -6,7 +6,8 @@
     "id": "cordova-plugin-intercom",
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "browser"
     ]
   },
   "repository": {
@@ -18,7 +19,8 @@
     "intercom-cordova",
     "ecosystem:cordova",
     "cordova-ios",
-    "cordova-android"
+    "cordova-android",
+    "cordova-browser"
   ],
   "engines": [
     {
@@ -31,6 +33,10 @@
     },
     {
       "name": "cordova-ios",
+      "version": ">=5.0.0"
+    },
+    {
+      "name": "cordova-browser",
       "version": ">=5.0.0"
     }
   ],
