@@ -11,11 +11,8 @@ script.innerHTML = "(function(){var w=window;var ic=w.Intercom;if(typeof ic==='f
 document.getElementsByTagName('head')[0].appendChild(script);
 
 function getAppVersion() {
-    var Connect = new XMLHttpRequest();
-    Connect.open("GET", "config.xml", false);
-    Connect.setRequestHeader("Content-Type", "text/xml");
-    Connect.send(null);
-    return Connect.responseXML.getElementsByTagName("widget")[0].getAttribute("version");
+    const app = window.require('electron').remote.app;
+    return app.getVersion();
 }
 
 function checkLang(lang) {

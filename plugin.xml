@@ -66,9 +66,9 @@
       </config-file>
     </platform>
 
-    <platform name="browser">
+    <platform name="electron">
         <hook type="after_prepare" src="scripts/after_prepare.js" />
-        <js-module src="src/browser/intercom-browser.js" name="IntercomProxy">
+        <js-module src="src/electron/intercom-electron.js" name="IntercomProxy">
             <runs />
         </js-module>
     </platform>
