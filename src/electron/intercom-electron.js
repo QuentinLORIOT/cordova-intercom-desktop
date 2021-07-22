@@ -27,7 +27,8 @@ var intercom = {
             user_id: options[0].userId,
             user_hash: options[0].userHash,
             desktop_app_version: getAppVersion(),
-            desktop_platform: process.platform
+            desktop_platform: process.platform,
+            desktop_arch: process.arch
         });
         successCallback('success');
     },
@@ -36,7 +37,8 @@ var intercom = {
             app_id: appId,
             language_override: checkLang(options[0].lang) ? options[0].lang.toLowerCase() : defaultLanguage,
             desktop_app_version: getAppVersion(),
-            desktop_platform: process.platform
+            desktop_platform: process.platform,
+            desktop_arch: process.arch
         });
         successCallback('success');
     },
