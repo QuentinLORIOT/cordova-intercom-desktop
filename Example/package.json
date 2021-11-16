@@ -1,0 +1,15 @@
+{
+    "name": "io.intercom.cordova.sample",
+    "version": "0.0.1",
+    "displayName": "Intercom Cordova",
+    "cordova": {
+        "platforms": [
+            "ios",
+            "android"
+        ]
+    },
+    "dependencies": {
+        "cordova-android": "^10.0.0",
+        "cordova-ios": "^6.1.1"
+    }
+}
